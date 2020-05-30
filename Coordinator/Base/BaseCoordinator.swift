@@ -16,7 +16,9 @@ class BaseCoordinator {
         start(with: nil)
     }
 
-    func start(with deepLink: DeepLink?) { }
+    func start(with deepLink: DeepLink?) {
+        assertionFailure("Not implemented")
+    }
 
     func attachChild(_ coordinator: BaseCoordinator) {
         if childCoordinators.contains(where: { $0 === coordinator }) { return }
