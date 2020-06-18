@@ -8,14 +8,16 @@
 
 import UIKit
 
-final class Router {
+final class Router: NSObject {
 
     private let rootController: UINavigationController
-    private var completions: [UIViewController : () -> Void]
+    private var onPopBlocks: [UIViewController : () -> Void]
 
     init(rootController: UINavigationController) {
         self.rootController = rootController
-        completions = [:]
+        self.onPopBlocks = [:]
+        super.init()
+        self.rootController.delegate = self
     }
 
     func present(_ controller: UIViewController, animated: Bool = true) {
@@ -27,9 +29,9 @@ final class Router {
     }
 
     func push(_ controller: UIViewController, animated: Bool = true,
-              hideBottomBar: Bool = false, completion: (() -> Void)? = nil) {
-        if let completion = completion {
-            completions[controller] = completion
+              hideBottomBar: Bool = false, onPopBlock: (() -> Void)? = nil) {
+        if let onPopBlock = onPopBlock {
+            onPopBlocks[controller] = onPopBlock
         }
         controller.hidesBottomBarWhenPushed = hideBottomBar
         rootController.pushViewController(controller, animated: animated)
@@ -37,7 +39,7 @@ final class Router {
 
     func pop(animated: Bool = true) {
         if let controller = rootController.popViewController(animated: animated) {
-            runCompletion(for: controller)
+            runOnPopBlock(for: controller)
         }
     }
 
@@ -49,16 +51,28 @@ final class Router {
     func popToRootViewController(animated: Bool = true) {
         if let controllers = rootController.popToRootViewController(animated: animated) {
             controllers.forEach { controller in
-                runCompletion(for: controller)
+                runOnPopBlock(for: controller)
             }
         }
     }
 
     // MARK: -
 
-    private func runCompletion(for controller: UIViewController) {
-        guard let completion = completions[controller] else { return }
-        completion()
-        completions[controller] = nil
+    private func runOnPopBlock(for controller: UIViewController) {
+        guard let onPopBlock = onPopBlocks[controller] else { return }
+        onPopBlock()
+        onPopBlocks[controller] = nil
     }
 }
+
+extension Router: UINavigationControllerDelegate {
+
+    func navigationController(_ navigationController: UINavigationController,
+                              didShow viewController: UIViewController,
+                              animated: Bool) {
+        guard let popped = navigationController.transitionCoordinator?.viewController(forKey: .from) else { return }
+        guard !navigationController.viewControllers.contains(popped) else { return }
+        runOnPopBlock(for: popped)
+    }
+}
+
