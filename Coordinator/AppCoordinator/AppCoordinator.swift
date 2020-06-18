@@ -18,12 +18,12 @@ final class AppCoordinator: BaseCoordinator {
         self.dependency = dependency
     }
 
-    private var launchFlow: LaunchFlow {
-        LaunchFlow.build()
+    private var appState: AppState {
+        AppState.build()
     }
 
     override func start(with deepLink: DeepLink?) {
-        switch launchFlow {
+        switch appState {
         case .auth:
             runAuthFlow(deepLink)
         case .onboarding:
@@ -36,7 +36,7 @@ final class AppCoordinator: BaseCoordinator {
     private func runAuthFlow(_ deepLink: DeepLink?) {
         let coordinator = AuthCoordinator(dependency: dependency.authDependency, appRouter: appRouter)
         coordinator.finishFlow = { [unowned self, unowned coordinator] in
-            LaunchFlow.authenticated = true
+            AppState.authenticated = true
             self.start(with: deepLink)
             self.detachChild(coordinator)
         }
@@ -47,7 +47,7 @@ final class AppCoordinator: BaseCoordinator {
     private func runOnboardingFlow(_ deepLink: DeepLink?) {
         let coordinator = OnboardingCoordinator(dependency: dependency.onboardingDependency, appRouter: appRouter)
         coordinator.finishFlow = { [unowned self, unowned coordinator] in
-            LaunchFlow.onboardingWasShown = true
+            AppState.onboardingWasShown = true
             self.start(with: deepLink)
             self.detachChild(coordinator)
         }

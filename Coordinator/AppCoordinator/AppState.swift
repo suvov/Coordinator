@@ -1,5 +1,5 @@
 //
-//  LaunchFlow.swift
+//  AppState.swift
 //  Coordinator
 //
 //  Created by Vladimir Shutyuk on 18/05/2020.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-enum LaunchFlow {
+enum AppState {
 
     case auth, onboarding, tabs
 
     static func build(authenticated: Bool = authenticated,
-                      onboardingWasShown: Bool = onboardingWasShown) -> LaunchFlow {
+                      onboardingWasShown: Bool = onboardingWasShown) -> AppState {
         switch (onboardingWasShown, authenticated) {
         case (true, false), (false, false): return .auth
         case (false, true): return .onboarding

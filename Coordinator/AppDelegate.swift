@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func scheduleDeAuth() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-            LaunchFlow.authenticated = false
+            AppState.authenticated = false
             self.applicationCoordinator.detachAllChilds()
             self.applicationCoordinator.start()
         })

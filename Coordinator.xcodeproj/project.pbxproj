@@ -25,7 +25,7 @@
 		E73437A42472720000B33F3B /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73437A12472720000B33F3B /* BaseCoordinator.swift */; };
 		E73437AB2472720C00B33F3B /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73437A72472720C00B33F3B /* AppDependency.swift */; };
 		E73437AC2472720C00B33F3B /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73437A82472720C00B33F3B /* DeepLink.swift */; };
-		E73437AD2472720C00B33F3B /* LaunchFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73437A92472720C00B33F3B /* LaunchFlow.swift */; };
+		E73437AD2472720C00B33F3B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73437A92472720C00B33F3B /* AppState.swift */; };
 		E78AA23224727AF100CEA05D /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AA23124727AF100CEA05D /* ItemRepository.swift */; };
 		E78AA23724729B1300CEA05D /* OnboardingDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AA23624729B1300CEA05D /* OnboardingDependency.swift */; };
 		E78AA23924729B9700CEA05D /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78AA23824729B9700CEA05D /* AuthCoordinator.swift */; };
@@ -56,7 +56,7 @@
 		E73437A12472720000B33F3B /* BaseCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		E73437A72472720C00B33F3B /* AppDependency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		E73437A82472720C00B33F3B /* DeepLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
-		E73437A92472720C00B33F3B /* LaunchFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchFlow.swift; sourceTree = "<group>"; };
+		E73437A92472720C00B33F3B /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E73437AF2472721900B33F3B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		E78AA23124727AF100CEA05D /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
 		E78AA234247282F300CEA05D /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 			children = (
 				E73437A72472720C00B33F3B /* AppDependency.swift */,
 				E73437AF2472721900B33F3B /* AppCoordinator.swift */,
-				E73437A92472720C00B33F3B /* LaunchFlow.swift */,
+				E73437A92472720C00B33F3B /* AppState.swift */,
 			);
 			path = AppCoordinator;
 			sourceTree = "<group>";
@@ -314,7 +314,7 @@
 				E7CA387F2473C454006E5106 /* AppRouter.swift in Sources */,
 				E7316130247274A800C09867 /* TabBarController.swift in Sources */,
 				E73437AB2472720C00B33F3B /* AppDependency.swift in Sources */,
-				E73437AD2472720C00B33F3B /* LaunchFlow.swift in Sources */,
+				E73437AD2472720C00B33F3B /* AppState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

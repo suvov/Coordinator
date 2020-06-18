@@ -24,6 +24,6 @@ Coordinators use Router to present view controllers.
 
 Describes flow through tree of coordinators to designated screen.
 
-### LaunchFlow
+### AppState
 
-Describes app launch flow. For example, gives answer whether onboarding was already shown to this user.
+Current top-level app state. 
